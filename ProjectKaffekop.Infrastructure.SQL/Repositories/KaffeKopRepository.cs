@@ -24,7 +24,7 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public List<CoffeeCup> GetAllCoffeeCups()
         {
-            return _context.Cups.ToList();
+            return _context.CoffeeCups.ToList();
         }
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
@@ -54,7 +54,7 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public CoffeeCup GetCoffeeCupById(int id)
         {
-            return _context.Cups
+            return _context.CoffeeCups
                 .Include(cup => cup.Name)
                 .ThenInclude(cup => cup)
                 .FirstOrDefault(cup => cup.Id == id);
