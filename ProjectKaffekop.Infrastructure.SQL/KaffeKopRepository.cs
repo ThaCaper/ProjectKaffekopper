@@ -7,27 +7,48 @@ namespace ProjectKaffekop.Infrastructure.SQL
     {
         public CoffeeCup CreateCoffeeCup(CoffeeCup createCup)
         {
-            throw new System.NotImplementedException();
+            createCup.Id = FakeDb.Id++;
+            FakeDb.AllCups.ToList().Add(createCup);
+            return createCup;
         }
 
         public CoffeeCup GetAllCoffeeCups()
         {
-            throw new System.NotImplementedException();
+            return FakeDb.AllCups;
         }
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
         {
-            throw new System.NotImplementedException();
+            var cupFromDatabase = GetCoffeeCupById(updated.Id);
+            if (cupFromDatabase == null)
+            {
+                return null;
+            }
+
+            cupFromDatabase.Name = updated.Name;
+            cupFromDatabase.Price = updated.Price;
+            cupFromDatabase.Color = updated.Color;
+            cupFromDatabase.Volume = updated.Volume;
+            cupFromDatabase.Description = updated.Description;
+            cupFromDatabase.Material = updated.Material;
+
+            return cupFromDatabase;
         }
 
         public CoffeeCup DeleteCoffeeCup(int id)
         {
-            throw new System.NotImplementedException();
+            var foundCup = ReadById(id);
+            if (foundCup != null)
+            {
+                return null;
+            }
+            FakeDb.AllCups.ToList().Remove(foundCup);
+            return foundCup;
         }
 
         public CoffeeCup GetCoffeeCupById(int id)
         {
-            throw new System.NotImplementedException();
+            return FakeDb.AllCups.FirstOrDefault(cup => cup.Id == id);
         }
     }
 }
