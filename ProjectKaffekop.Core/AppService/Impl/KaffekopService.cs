@@ -12,7 +12,7 @@ namespace ProjectKaffekop.Core.AppService.Impl
         {
             _KaffekopRepository = KaffeKopRepository;
         }   
-        public CoffeeCup NewCup(string name, Color color, double Volume, Material Material, string Description, double price)
+        public CoffeeCup NewCup(string name, Color color, double volume, Material material, string description, double price)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -24,17 +24,17 @@ namespace ProjectKaffekop.Core.AppService.Impl
                 throw new InvalidDataException("please insert valid colour!");
             }
 
-            if (string.IsNullOrEmpty(Volume.ToString()))
+            if (string.IsNullOrEmpty(volume.ToString()))
             {
-                throw new InvalidDataException("please give correct messurements!");
+                throw new InvalidDataException("please give correct measurements!");
             }
 
-            if (string.IsNullOrEmpty(Material.ToString()))
+            if (string.IsNullOrEmpty(material.ToString()))
             {
                 throw new InvalidDataException("insert valid material!");
             }
 
-            if (string.IsNullOrEmpty(Description))
+            if (string.IsNullOrEmpty(description))
             {
                 throw new InvalidDataException("please add a description!");
             }
@@ -48,9 +48,9 @@ namespace ProjectKaffekop.Core.AppService.Impl
             {
                 Name= name,
                 Color = color,
-                Volume = Volume,
-                Material = Material,
-                Description = Description,
+                Volume = volume,
+                Material = material,
+                Description = description,
                 Price = price
 
             };

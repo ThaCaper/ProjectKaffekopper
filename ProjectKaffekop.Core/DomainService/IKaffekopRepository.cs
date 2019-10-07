@@ -9,7 +9,7 @@ namespace ProjectKaffekop.Core.DomainService
 
         //Reads all Coffee Cups
         CoffeeCup GetAllCoffeeCups();
-
+        
         //Updates Coffee Cups
         CoffeeCup UpdateCoffeeCup(CoffeeCup updated);
 
