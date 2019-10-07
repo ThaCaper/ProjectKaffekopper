@@ -29,20 +29,9 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
         {
-            var cupFromDatabase = GetCoffeeCupById(updated.Id);
-            if (cupFromDatabase == null)
-            {
-                return null;
-            }
-
-            cupFromDatabase.Name = updated.Name;
-            cupFromDatabase.Price = updated.Price;
-            cupFromDatabase.Color = updated.Color;
-            cupFromDatabase.Volume = updated.Volume;
-            cupFromDatabase.Description = updated.Description;
-            cupFromDatabase.Material = updated.Material;
-
-            return cupFromDatabase;
+            _context.Attach(updated).State = EntityState.Modified;
+            _context.SaveChanges();
+            return updated;
         }
 
         public CoffeeCup DeleteCoffeeCup(int id)

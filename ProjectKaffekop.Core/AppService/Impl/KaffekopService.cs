@@ -70,14 +70,7 @@ namespace ProjectKaffekop.Core.AppService.Impl
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
         {
-            var cup = GetCoffeeCupById(updated.Id);
-            cup.Color = updated.Color;
-            cup.Description = updated.Description;
-            cup.Material = updated.Material;
-            cup.Price = updated.Price;
-            cup.Volume = updated.Volume;
-
-            return cup;
+            return _KaffekopRepository.UpdateCoffeeCup(updated);
 
         }
 
