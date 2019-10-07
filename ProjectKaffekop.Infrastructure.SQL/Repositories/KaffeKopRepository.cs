@@ -1,7 +1,7 @@
 ﻿using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Core.Entity;
 
-namespace ProjectKaffekop.Infrastructure.SQL
+namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 {
     public class KaffeKopRepository : IKaffekopRepository
     {
