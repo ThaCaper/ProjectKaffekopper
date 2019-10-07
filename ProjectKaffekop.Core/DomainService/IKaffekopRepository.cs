@@ -17,7 +17,5 @@ namespace ProjectKaffekop.Core.DomainService
         CoffeeCup DeleteCoffeeCup(int id);
 
         CoffeeCup GetCoffeeCupById(int id);
-
-
     }
 }

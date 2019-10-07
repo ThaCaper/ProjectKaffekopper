@@ -1,7 +1,13 @@
-﻿namespace ProjectKaffekop.Infrastructure.SQL
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ProjectKaffekop.Infrastructure.SQL
 {
-    public class ProjectKaffekopContext
+    public class ProjectKaffekopContext: DbContext
     {
-        
+        public ProjectKaffekopContext(DbContextOptions opt) : base(opt)
+        {
+
+        }
+
     }
 }

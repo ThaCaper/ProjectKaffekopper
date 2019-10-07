@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjectKaffekop.Core.Entity\ProjectKaffekop.Core.Entity.csproj" />
     <ProjectReference Include="..\ProjectKaffekop.Core\ProjectKaffekop.Core.csproj" />
   </ItemGroup>

@@ -37,7 +37,7 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public CoffeeCup DeleteCoffeeCup(int id)
         {
-            var foundCup = ReadById(id);
+            var removed = _co(id);
             if (foundCup != null)
             {
                 return null;
