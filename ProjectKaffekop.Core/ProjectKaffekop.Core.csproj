@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppService\Impl\" />
-    <Folder Include="DomainService\" />
+    <ProjectReference Include="..\ProjectKaffekop.Core.Entity\ProjectKaffekop.Core.Entity.csproj" />
   </ItemGroup>
 
 </Project>
