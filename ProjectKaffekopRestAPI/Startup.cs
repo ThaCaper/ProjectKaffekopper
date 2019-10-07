@@ -37,6 +37,12 @@ namespace ProjectKaffekopRestAPI
                     opt => opt.UseSqlite("Data Source=coffeeCupApp.db"));
 
             }
+
+            if (Environment.IsProduction())
+            {
+                services.AddDbContext<ProjectKaffekopContext>(
+                    opt => opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

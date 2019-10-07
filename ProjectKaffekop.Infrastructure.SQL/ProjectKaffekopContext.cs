@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Infrastructure.SQL
 {
@@ -9,5 +10,14 @@ namespace ProjectKaffekop.Infrastructure.SQL
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CoffeeCup>()
+                .HasKey(cc => new {cc.Id});
+        }
+
+        public DbSet<CoffeeCup> CoffeeCups { get; set; }
     }
 }
