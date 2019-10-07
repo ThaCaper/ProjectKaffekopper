@@ -11,7 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ProjectKaffekop.Core.AppService;
+using ProjectKaffekop.Core.AppService.Impl;
+using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Infrastructure.SQL;
+using ProjectKaffekop.Infrastructure.SQL.Repositories;
 
 namespace ProjectKaffekopRestAPI
 {
@@ -43,6 +47,9 @@ namespace ProjectKaffekopRestAPI
                 services.AddDbContext<ProjectKaffekopContext>(
                     opt => opt.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
             }
+
+            services.AddScoped<IKaffekopRepository,KaffeKopRepository>();
+            services.AddScoped<IKaffekopService, KaffekopService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +61,11 @@ namespace ProjectKaffekopRestAPI
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<ProjectKaffekopContext>();
+                    ctx.Database.EnsureCreated();
+                }
                 app.UseHsts();
             }
 
