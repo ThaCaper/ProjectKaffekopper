@@ -1,5 +1,4 @@
-﻿
-using ProjectKaffekop.Core.Entity;
+﻿using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Core.AppService
 {
