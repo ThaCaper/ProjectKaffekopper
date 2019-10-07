@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Core.Entity;
 
@@ -62,7 +63,7 @@ namespace ProjectKaffekop.Core.AppService.Impl
             return _KaffekopRepository.CreateCoffeeCup(createCup);
         }
 
-        public CoffeeCup GetAllCups()
+        public List<CoffeeCup> GetAllCups()
         {
             return _KaffekopRepository.GetAllCoffeeCups();
         }

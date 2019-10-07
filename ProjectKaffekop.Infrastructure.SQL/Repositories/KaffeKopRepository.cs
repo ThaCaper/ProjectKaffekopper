@@ -1,20 +1,30 @@
-﻿using ProjectKaffekop.Core.DomainService;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 {
     public class KaffeKopRepository : IKaffekopRepository
     {
+
+        private readonly ProjectKaffekopContext _context;
+
+        public KaffeKopRepository(ProjectKaffekopContext context)
+        {
+            _context = context;
+        }
         public CoffeeCup CreateCoffeeCup(CoffeeCup createCup)
         {
-            createCup.Id = FakeDb.Id++;
-            FakeDb.AllCups.ToList().Add(createCup);
+            _context.Attach(createCup).State = EntityState.Added;
+            _context.SaveChanges();
             return createCup;
         }
 
-        public CoffeeCup GetAllCoffeeCups()
+        public List<CoffeeCup> GetAllCoffeeCups()
         {
-            return FakeDb.AllCups;
+            return _context.Cups.ToList();
         }
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
@@ -37,18 +47,17 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public CoffeeCup DeleteCoffeeCup(int id)
         {
-            var removed = _co(id);
-            if (foundCup != null)
-            {
-                return null;
-            }
-            FakeDb.AllCups.ToList().Remove(foundCup);
-            return foundCup;
+            var removed = _context.Remove(new CoffeeCup() { Id = id }).Entity;
+            _context.SaveChanges();
+            return removed;
         }
 
         public CoffeeCup GetCoffeeCupById(int id)
         {
-            return FakeDb.AllCups.FirstOrDefault(cup => cup.Id == id);
+            return _context.Cups
+                .Include(cup => cup.Name)
+                .ThenInclude(cup => cup)
+                .FirstOrDefault(cup => cup.Id == id);
         }
     }
 }

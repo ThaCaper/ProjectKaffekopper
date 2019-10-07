@@ -9,6 +9,7 @@ namespace ProjectKaffekop.Infrastructure.SQL
         {
 
         }
+<<<<<<< HEAD
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,5 +20,8 @@ namespace ProjectKaffekop.Infrastructure.SQL
         }
 
         public DbSet<CoffeeCup> CoffeeCups { get; set; }
+=======
+        public DbSet<CoffeeCup> Cups { get; set; }
+>>>>>>> e495e884687003176df1e481d3058a0d5bba81da
     }
 }
