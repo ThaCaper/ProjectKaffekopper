@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Infrastructure.SQL
 {
@@ -8,6 +9,6 @@ namespace ProjectKaffekop.Infrastructure.SQL
         {
 
         }
-
+        public DbSet<CoffeeCup> Cups { get; set; }
     }
 }

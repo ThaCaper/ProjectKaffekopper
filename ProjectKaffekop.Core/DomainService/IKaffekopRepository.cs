@@ -1,4 +1,5 @@
-﻿using ProjectKaffekop.Core.Entity;
+﻿using System.Collections.Generic;
+using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Core.DomainService
 {
@@ -8,7 +9,7 @@ namespace ProjectKaffekop.Core.DomainService
         CoffeeCup CreateCoffeeCup(CoffeeCup createCup);
 
         //Reads all Coffee Cups
-        CoffeeCup GetAllCoffeeCups();
+        List<CoffeeCup> GetAllCoffeeCups();
         
         //Updates Coffee Cups
         CoffeeCup UpdateCoffeeCup(CoffeeCup updated);
