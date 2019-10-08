@@ -1,0 +1,11 @@
+﻿using System.Collections.Generic;
+
+namespace ProjectKaffekop.Core.Entity
+{
+    public class CustomerType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<Customer> Customers { get; set; }
+    }
+}
