@@ -19,14 +19,14 @@ namespace ProjectKaffekopRestAPI.Controllers
         {
             _kaffekopService = kaffekopService;
         }
-        // GET api/coffeeCups
+        // GET api/coffeeCups -- read all
         [HttpGet]
         public ActionResult<IEnumerable<CoffeeCup>> GetAllCoffeCups()
         {
             return _kaffekopService.GetAllCups();
         }
 
-        // GET api/coffeeCups/5
+        // GET api/coffeeCups/5 -- read by Id
         [HttpGet("{id}")]
         public ActionResult<CoffeeCup> Get(int id)
         {
@@ -40,7 +40,7 @@ namespace ProjectKaffekopRestAPI.Controllers
             return _kaffekopService.CreateCoffeeCup(coffeeCup);
         }
 
-        // PUT api/coffeeCups/5
+        // PUT api/coffeeCups/5 -- Update
         [HttpPut("{id}")]
         public ActionResult<CoffeeCup> Put(int id, [FromBody] CoffeeCup coffeeCup)
         {
