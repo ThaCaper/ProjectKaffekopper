@@ -22,7 +22,7 @@ namespace ProjectKaffekop.Core.AppService.Impl
 
             if (string.IsNullOrEmpty(color.ToString()))
             {
-                throw new InvalidDataException("please insert valid colour!");
+                throw new InvalidDataException("please insert valid color!");
             }
 
             if (string.IsNullOrEmpty(volume.ToString()))
