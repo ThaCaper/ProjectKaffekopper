@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using ProjectKaffekop.Core.DomainService;
+using ProjectKaffekop.Core.DomainService.Filtering;
 using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Core
@@ -40,7 +41,7 @@ namespace ProjectKaffekop.Core
             return _orderRepo.ReadById(id);
         }
 
-        public List<Order> GetAllOrders()
+        public FilteredList<Order> GetAllOrders()
         {
             return _orderRepo.ReadAll();
         }

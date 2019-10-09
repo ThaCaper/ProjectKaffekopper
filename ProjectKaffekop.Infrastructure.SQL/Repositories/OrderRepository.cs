@@ -23,7 +23,7 @@ namespace ProjectKaffekop.Infrastructure.SQL
 
         public Order ReadById(int id)
         {
-            return _context.Orders.Include(o => o.Customer)
+           return _context.Orders.Include(o => o.Customer)
                 .Include(o => o.OrderLines)
                 .ThenInclude(ol => ol.Product)
                 .FirstOrDefault(o => o.Id == id);

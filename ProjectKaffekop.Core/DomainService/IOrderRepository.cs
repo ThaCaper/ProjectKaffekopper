@@ -1,4 +1,5 @@
-﻿using ProjectKaffekop.Core.DomainService.Filtering;
+﻿using System.Collections.Generic;
+using ProjectKaffekop.Core.DomainService.Filtering;
 using ProjectKaffekop.Core.Entity;
 
 namespace ProjectKaffekop.Core
