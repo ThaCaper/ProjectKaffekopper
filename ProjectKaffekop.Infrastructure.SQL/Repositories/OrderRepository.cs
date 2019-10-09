@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProjectKaffekop.Core;
+using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Core.DomainService.Filtering;
 using ProjectKaffekop.Core.Entity;
 
-namespace ProjectKaffekop.Infrastructure.SQL
+namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 {
     public class OrderRepository: IOrderRepository
     {

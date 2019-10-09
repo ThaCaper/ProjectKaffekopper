@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using ProjectKaffekop.Core.DomainService;
 using ProjectKaffekop.Core.DomainService.Filtering;
 using ProjectKaffekop.Core.Entity;
 
-namespace ProjectKaffekop.Core
+namespace ProjectKaffekop.Core.AppService.Impl
 {
     public class OrderService: IOrderService
     {
