@@ -15,4 +15,11 @@ namespace ProjectKaffekop.Core.Entity
 
         public List<Order> Orders { get; set; }
     }
-}
+
+    public class CustomerType
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public List<Customer> Customers { get; set; }
+        }
+    }
