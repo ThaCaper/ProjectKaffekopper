@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Converters;
 using ProjectKaffekop.Core.AppService;
 using ProjectKaffekop.Core.AppService.Impl;
 using ProjectKaffekop.Core.DomainService;
@@ -50,13 +51,29 @@ namespace ProjectKaffekopRestAPI
 
             services.AddScoped<IKaffekopRepository,KaffeKopRepository>();
             services.AddScoped<IKaffekopService, KaffekopService>();
+
+            services.AddCors(opt =>
+                opt.AddPolicy("AllowSpecificOrigin", builder => builder.AllowAnyHeader()
+                    .AllowAnyMethod().AllowAnyOrigin()));
+
+            services.AddMvc().AddJsonOptions( op => {
+                op.SerializerSettings.Converters.Add(new StringEnumConverter());
+            });
+            
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors("AllowSpecificOrigin");
             if (env.IsDevelopment())
             {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<ProjectKaffekopContext>();
+                    ctx.Database.EnsureCreated();
+                }
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -68,7 +85,7 @@ namespace ProjectKaffekopRestAPI
                 }
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }

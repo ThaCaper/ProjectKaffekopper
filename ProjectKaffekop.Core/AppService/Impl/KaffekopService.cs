@@ -9,9 +9,9 @@ namespace ProjectKaffekop.Core.AppService.Impl
     {
         private readonly IKaffekopRepository _KaffekopRepository;
 
-        public KaffekopService(IKaffekopRepository KaffeKopRepository)
+        public KaffekopService(IKaffekopRepository kaffeKopRepository)
         {
-            _KaffekopRepository = KaffeKopRepository;
+            _KaffekopRepository = kaffeKopRepository;
         }   
         public CoffeeCup NewCup(string name, Color color, double volume, Material material, string description, double price)
         {
@@ -22,7 +22,7 @@ namespace ProjectKaffekop.Core.AppService.Impl
 
             if (string.IsNullOrEmpty(color.ToString()))
             {
-                throw new InvalidDataException("please insert valid colour!");
+                throw new InvalidDataException("please insert valid color!");
             }
 
             if (string.IsNullOrEmpty(volume.ToString()))

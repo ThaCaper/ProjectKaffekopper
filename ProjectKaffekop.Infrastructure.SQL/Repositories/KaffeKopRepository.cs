@@ -44,8 +44,6 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
         public CoffeeCup GetCoffeeCupById(int id)
         {
             return _context.CoffeeCups
-                .Include(cup => cup.Name)
-                .ThenInclude(cup => cup)
                 .FirstOrDefault(cup => cup.Id == id);
         }
     }
