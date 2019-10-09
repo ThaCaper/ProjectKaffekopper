@@ -21,7 +21,7 @@ namespace ProjectKaffekopRestAPI.Controllers
         }
         // GET api/coffeeCups -- read all
         [HttpGet]
-        public ActionResult<IEnumerable<CoffeeCup>> GetAllCoffeCups()
+        public ActionResult<IEnumerable<CoffeeCup>> GetAllCoffeeCups()
         {
             return _kaffekopService.GetAllCups();
         }
