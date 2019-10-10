@@ -2,8 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/coffeeCupCreate">Create</router-link> |
-      <router-link to="/coffeeCupList">Read</router-link> |
-      <router-link to="/coffeeCupDelete/">Delete</router-link>
+      <router-link to="/coffeeCupList">Read</router-link>
     </div>
     <router-view/>
   </div>
