@@ -29,7 +29,15 @@ namespace ProjectKaffekop.Infrastructure.SQL.Repositories
 
         public CoffeeCup UpdateCoffeeCup(CoffeeCup updated)
         {
-            _context.Attach(updated).State = EntityState.Modified;
+            var oldCup = _context.CoffeeCups.FirstOrDefault(c => c.Id == updated.Id);
+
+            oldCup.Name = updated.Name;
+            oldCup.Color = updated.Color;
+            oldCup.Material = updated.Material;
+            oldCup.Description = updated.Description;
+            oldCup.Volume = updated.Volume;
+            oldCup.Price = updated.Price;
+
             _context.SaveChanges();
             return updated;
         }

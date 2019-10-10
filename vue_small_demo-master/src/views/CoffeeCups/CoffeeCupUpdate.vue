@@ -27,6 +27,8 @@
                 <v-text-field
                         v-model="volume"
                         label="The volume cl"
+                        value="00.00"
+                        type="number"
                         required
                 ></v-text-field>
             <p>
@@ -48,11 +50,11 @@
                 <v-text-field
                         v-model="price"
                         label="The price of the product"
+                        type="number"
                         required
                 ></v-text-field>
             <p>
-
-                <button class="w3-btn w3-blue"  @click="updateCoffeeCup()">Register</button></p>
+            <router-link :to="{path:'/coffeeCupList/'}"><v-btn @click="updateCoffeeCup">Update</v-btn></router-link></p>
         </form>
 
         </body>
@@ -71,11 +73,11 @@
                 name: '',
                 color:'Blue',
                 colors: ['Yellow', 'Red', 'Black', 'White', 'Silver', 'Green', 'Blue', 'Orange' ],
-                volume: '',
+                volume: 0,
                 material: 'Cardboard',
                 materials: ['Plastic', 'Cardboard', 'Aluminum', 'Steel', 'Ceramic'],
                 description: '',
-                price: '',
+                price: 0,
                 id: this.$route.params.id
             }},
         methods: {
@@ -85,10 +87,10 @@
                         let coffeeCup = response.data;
                         this.name = coffeeCup.name;
                         this.color = coffeeCup.color;
-                        this.volume = coffeeCup.volume;
+                        this.volume = +coffeeCup.volume;
                         this.material = coffeeCup.material;
                         this.description = coffeeCup.description;
-                        this.price = coffeeCup.price;
+                        this.price = +coffeeCup.price;
 
 
                     });
@@ -97,15 +99,21 @@
                 axios.put('http://coffeecupshop.azurewebsites.net/api/coffeeCups/' + this.id, {
                     name: this.name,
                     color: this.color,
-                    volume: this.volume,
+                    volume: +this.volume,
                     material: this.material,
                     description: this.description,
-                    price: this.price,
-
-
+                    price: +this.price,
+                    id: this.id
                 } )
 
+            },
+            fetchProducts() {
+
+                axios.get('http://coffeecupshop.azurewebsites.net/api/coffeeCups')
+                    .then((data) => {
+                        this.coffeeCups = data.data})
             }
+
 
         }
     };

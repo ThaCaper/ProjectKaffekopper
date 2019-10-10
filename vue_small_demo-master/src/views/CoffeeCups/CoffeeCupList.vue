@@ -22,7 +22,7 @@
                   <td>{{product.color}}</td>
                   <td>{{product.material}}</td>
                   <td>{{product.volume}} cl</td>
-                  <td>{{product.price}}</td>
+                  <td>{{product.price}} dkk</td>
                   <td><router-link :to="{path:'/coffeeCupUpdate/' + product.id}"><v-btn>Update</v-btn></router-link></td>
                   <td><v-btn @click="deleteButton(product.id)">Delete</v-btn></td>
             </tr>
@@ -70,7 +70,9 @@
         padding: 8px;
     }
 
-    table tr:nth-child(even){background-color: #f2f2f2;}
+    table tr:nth-child(odd){background-color: #f4f4f4;}
+
+    table tr:nth-child(even){background-color: #EBE8DA;}
 
     table tr:hover {background-color: #ddd;}
 
@@ -78,7 +80,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: center;
-        background-color: #ff9218;
+        background-color: #C36A2D;
         color: white;
     }
 </style>
