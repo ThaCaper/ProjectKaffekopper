@@ -52,7 +52,7 @@
             ></v-text-field>
             <p>
 
-            <router-link :to="{path:'/coffeeCupList/'}"><button class="w3-btn w3-blue"  @click="createCoffeeCup">Register</button></router-link></p>
+            <button class="w3-btn w3-blue"  @click="createCoffeeCup">Register</button></p>
         </form>
 
         </body>
@@ -87,6 +87,8 @@
                     material: this.material,
                     description: this.description,
                     price: +this.price
+                }).then(() => {
+                    this.$router.push({ path: '/coffeeCupList' })
                 });
             }
         }

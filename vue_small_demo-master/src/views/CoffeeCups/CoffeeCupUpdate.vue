@@ -54,7 +54,7 @@
                         required
                 ></v-text-field>
             <p>
-            <router-link :to="{path:'/coffeeCupList/'}"><v-btn @click="updateCoffeeCup">Update</v-btn></router-link></p>
+                <v-btn @click="updateCoffeeCup">Update</v-btn></p>
         </form>
 
         </body>
@@ -104,14 +104,11 @@
                     description: this.description,
                     price: +this.price,
                     id: this.id
-                } )
 
-            },
-            fetchProducts() {
+                } ).then(() => {
+                    this.$router.push({ path: '/coffeeCupList' })
+                })
 
-                axios.get('http://coffeecupshop.azurewebsites.net/api/coffeeCups')
-                    .then((data) => {
-                        this.coffeeCups = data.data})
             }
 
 
