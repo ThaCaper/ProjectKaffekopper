@@ -52,8 +52,7 @@
             ></v-text-field>
             <p>
             <v-btn @click="createCoffeeCup">Update</v-btn></p>
-                <!--<router-link :to="{path:'/coffeeCupList/'}"><button class="w3-btn w3-blue"  @click="createCoffeeCup">Register</button></router-link></p>
-        --></form>
+                </form>
 
         </body>
 
