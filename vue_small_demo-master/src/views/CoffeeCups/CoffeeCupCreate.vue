@@ -51,9 +51,9 @@
                     required
             ></v-text-field>
             <p>
-
-            <button class="w3-btn w3-blue"  @click="createCoffeeCup">Register</button></p>
-        </form>
+            <v-btn @click="createCoffeeCup">Update</v-btn></p>
+                <!--<router-link :to="{path:'/coffeeCupList/'}"><button class="w3-btn w3-blue"  @click="createCoffeeCup">Register</button></router-link></p>
+        --></form>
 
         </body>
 
@@ -64,7 +64,7 @@
     import axios from 'axios';
     export default {
         mounted() {
-            this.createCoffeeCup()
+
         },
         data () {
             return {
@@ -90,6 +90,12 @@
                 }).then(() => {
                     this.$router.push({ path: '/coffeeCupList' })
                 });
+            },
+            fetchProducts() {
+
+                axios.get('http://coffeecupshop.azurewebsites.net/api/coffeeCups')
+                    .then((data) => {
+                        this.coffeeCups = data.data})
             }
         }
     };
