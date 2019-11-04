@@ -89,12 +89,6 @@
                 }).then(() => {
                     this.$router.push({ path: '/coffeeCupList' })
                 });
-            },
-            fetchProducts() {
-
-                axios.get('http://coffeecupshop.azurewebsites.net/api/coffeeCups')
-                    .then((data) => {
-                        this.coffeeCups = data.data})
             }
         }
     };
